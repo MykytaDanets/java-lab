@@ -50,10 +50,10 @@ public class Main {
         //Task 4.5
         List<Person> persons = new ArrayList<>();
 
-        persons.add(new Student("Annie", 20, new int[]{50, 75, 88}, new String[]{"Math"}));
-        persons.add(new Student("John", 19, new int[]{11, 83, 91}, new String[]{"Physics"}));
+        persons.add(studentFirst);
+        persons.add(studentSecond);
         persons.add(new Student("Sara", 18, new int[]{77, 82, 90}, new String[]{"Biology"}));
-        persons.add(new Teacher("Mr. Bond", 50, 4210.97, new String[]{"Math"}));
+        persons.add(teacher);
         persons.add(new Teacher("Mrs. Green", 55, 3999.50, new String[]{"History"}));
 
         String filename = "persons.bin";
