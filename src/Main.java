@@ -54,7 +54,7 @@ public class Main {
         persons.add(new Student("John", 19, new int[]{11, 83, 91}, new String[]{"Physics"}));
         persons.add(new Student("Sara", 18, new int[]{77, 82, 90}, new String[]{"Biology"}));
         persons.add(new Teacher("Mr. Bond", 50, 4210.97, new String[]{"Math"}));
-        persons.add(new Teacher("Mrs. Green", 45, 3999.50, new String[]{"History"}));
+        persons.add(new Teacher("Mrs. Green", 55, 3999.50, new String[]{"History"}));
 
         String filename = "persons.bin";
 
@@ -105,7 +105,7 @@ public class Main {
     public static void savePersonsToFile(List<Person> persons, String filename) {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
             out.writeObject(persons);
-            System.out.println("Saved persons to file: " + filename);
+            System.out.println("\nSaved persons to file: " + filename);
         } catch (IOException e) {
             System.err.println("Error saving persons: " + e.getMessage());
         }
