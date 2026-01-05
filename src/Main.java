@@ -103,22 +103,46 @@ public class Main {
     }
 
     public static void savePersonsToFile(List<Person> persons, String filename) {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
+        ObjectOutputStream out = null;
+
+        try {
+            out = new ObjectOutputStream(new FileOutputStream(filename));
             out.writeObject(persons);
             System.out.println("\nSaved persons to file: " + filename);
         } catch (IOException e) {
             System.err.println("Error saving persons: " + e.getMessage());
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    System.err.println("Error closing output stream: " + e.getMessage());
+                }
+            }
         }
     }
 
+
     public static List<Person> loadPersonsFromFile(String filename) {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
+        ObjectInputStream in = null;
+
+        try {
+            in = new ObjectInputStream(new FileInputStream(filename));
             return (List<Person>) in.readObject();
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Error loading persons: " + e.getMessage());
             return new ArrayList<>();
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    System.err.println("Error closing input stream: " + e.getMessage());
+                }
+            }
         }
     }
+
 }
 class Person implements Serializable {
     String name;
